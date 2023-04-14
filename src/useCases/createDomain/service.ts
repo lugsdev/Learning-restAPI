@@ -1,11 +1,20 @@
 import { HTTPError } from '@errors/httpError';
 import { DomainInput, DomainModel } from '../../models/domain';
+import { createDomainSchema } from './validation';
 
 export const createDomainService = async (data: DomainInput) => {
-  if (!data.domain) throw new HTTPError('domain is required');
-  if (!data.name) throw new HTTPError('domain name is required');
+  const validationResult = createDomainSchema.validateSync(data, {
+    abortEarly: false,
+    stripUnknown: true,
+  });
 
-  const createdDomain = await DomainModel.create(data);
+  const domainAlreadyExists = await DomainModel.findOne({
+    domainName: validationResult.domainName,
+  });
+
+  if (domainAlreadyExists) throw new HTTPError('domain name already exists', 400);
+
+  const createdDomain = await DomainModel.create(validationResult);
 
   return createdDomain;
 };
