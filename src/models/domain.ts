@@ -1,7 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface DomainInput {
-  userID: number;
+  user_id: number;
   domainTittle: string;
   domainName: string;
   validationKey: string;
@@ -13,7 +13,7 @@ export interface DomainDocument extends Document, DomainInput {}
 
 const DomainSchema = new Schema(
   {
-    userID: { type: String, required: true },
+    user_id: { type: String, required: true },
     domainTittle: { type: String, required: true },
     domainName: { type: String, required: true },
     validationKey: { type: String, required: false, default: '' },

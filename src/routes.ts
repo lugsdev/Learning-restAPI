@@ -8,7 +8,7 @@ const router = Router();
 
 router.post('/domains', createDomainController);
 router.patch('/domains/:id', updateDomainController);
-router.get('/domains/user/:userID', getAllDomainsController);
-router.delete('/domains/:id/user/:userID', removeDomainController);
+router.get('/domains/user/:user_id', getAllDomainsController);
+router.delete('/domains/:id/user/:user_id', removeDomainController);
 
 export { router };

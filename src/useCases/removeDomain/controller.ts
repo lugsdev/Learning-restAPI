@@ -4,7 +4,7 @@ import { removeDomainService } from './service';
 
 export const removeDomainController: RequestHandler = async (req, res) => {
   try {
-    await removeDomainService(req.params as { id: string; userID: string });
+    await removeDomainService(req.params as { id: string; user_id: string });
 
     res.status(204).send();
   } catch (error) {

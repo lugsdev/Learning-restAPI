@@ -4,7 +4,7 @@ import { getAllDomainsService } from './service';
 
 export const getAllDomainsController: RequestHandler = async (req, res) => {
   try {
-    const domains = await getAllDomainsService(req.params as { userID: string });
+    const domains = await getAllDomainsService(req.params as { user_id: string });
 
     return res.json({ domains });
   } catch (error) {

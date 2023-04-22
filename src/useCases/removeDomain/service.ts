@@ -4,7 +4,7 @@ import { HTTPError } from '@errors/httpError';
 
 type RemoveDomainService = {
   id: string;
-  userID: string;
+  user_id: string;
 };
 
 export const removeDomainService = async (data: RemoveDomainService) => {
@@ -18,6 +18,6 @@ export const removeDomainService = async (data: RemoveDomainService) => {
 
   return DomainModel.findOneAndDelete({
     _id: validationResult.id,
-    userID: validationResult.userID,
+    user_id: validationResult.user_id,
   });
 };
